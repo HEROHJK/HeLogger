@@ -25,12 +25,19 @@ public class HeLogger {
     ///  - fatal: 심각한 오류
     ///  - trace: 디버그보다 조금 더 상세하게
     public enum LogLevel: String {
+        /// 디버그 수준
         case debug      = "DEBUG"
+        /// 릴리즈 수준
         case release    = "RELEASE"
+        /// 정보성 로그
         case info       = "INFO"
+        /// 경고 (클로저로 에러 핸들링 가능)
         case warn       = "WARNING"
+        /// 심각한 오류 (클로저로 에러 핸들링 가능)
         case fatal      = "ERROR"
+        /// 상세한 디버그 수준
         case trace      = "TRACE"
+        /// 알 수 없음
         case unknown    = "UNKNOWN"
     }
     
@@ -45,14 +52,23 @@ public class HeLogger {
     ///  - download: 다운로드
     ///  - unknown: 알수 없음
     public enum LogType: String {
+        /// 네트워크
         case network    = "NETWORK"
+        /// UI컨트롤의 액션
         case action     = "ACTION"
+        /// 파싱
         case parsing    = "PARSING"
+        /// 로드
         case load       = "LOAD"
+        /// 플레이어(플레이어 앱 전용)
         case player     = "PLAYER"
+        /// 웹뷰
         case web        = "WEB"
+        /// UI 뷰
         case view       = "VIEW"
+        /// 다운로드 혹은 백그라운드?
         case download   = "DOWNLOAD"
+        /// 알 수 없음
         case unknown    = "UNKNOWN"
     }
     
