@@ -11,6 +11,61 @@ import Foundation
 public let heLogger = HeLogger.shared
 
 
+/// 로그 간단 기록.
+/// 더욱 더 편리하게 사용하기 위한 전역 함수
+/// - Parameters:
+///   - message: 로깅할 내용
+///   - function: 로그를 호출한 함수 (자동 작성)
+///   - file: 로그를 호출한 파일 (자동 작성)
+///   - line: 로그를 호출한 파일의 함수 위치 (자동 작성)
+public func hlog(
+    _ message: String,
+    function: String = #function,
+    file: String = #file,
+    line: Int = #line
+) {
+    heLogger.log(message, function: function, file: file, line: line)
+}
+
+
+/// 로그 상세 기록.
+/// 더욱 더 편리하게 사용하기 위한 전역 함수
+/// - Parameters:
+///   - level: 로그 레벨, LogLevel
+///   - type: 로그 타입, LogType
+///   - message: 로깅할 내용
+///   - function: 로그를 호출한 함수 (자동 작성)
+///   - file: 로그를 호출한 파일 (자동 작성)
+///   - line: 로그를 호출한 파일의 함수 위치 (자동 작성)
+public func hlog(
+    l level: HeLogger.LogLevel,
+    t type: HeLogger.LogType,
+    _ message: String,
+    function: String = #function,
+    file: String = #file,
+    line: Int = #line
+) {
+    heLogger.log(l: level, t: type, message, function: function, file: file, line: line)
+}
+
+/// 로그에서 무시할 타입 설정.
+/// 더욱 더 편리하게 사용하기 위한 전역 함수
+/// - Parameters:
+///   - type: 설정할 타입
+///   - remove: true = 설정 / false = 설정 해제
+public func setLogIgnoreType(type: HeLogger.LogType, remove: Bool = false) {
+    heLogger.setIgnoreType(type: type, remove: remove)
+}
+
+/// 로그에서 무시할 레벨 설정.
+/// 더욱 더 편리하게 사용하기 위한 전역 함수
+/// - Parameters:
+///   - level: 설정할 레벨
+///   - remove: true = 설정 / false = 설정 해제
+public func setLogIgnoreLevel(level: HeLogger.LogLevel, remove: Bool = false) {
+    heLogger.setIgnoreLevel(level: level, remove: remove)
+}
+
 /// 간단한 로깅을 위한 HeLogger
 public class HeLogger {
     /// 싱글톤. heLogger 대신 HeLogger.shared를 사용해도 되지만, 코드가 길어져서 권장하지는 않습니닷
@@ -179,6 +234,12 @@ public class HeLogger {
         let minutes = calendar.component(.minute, from: date)
         let seconds = calendar.component(.second, from: date)
         let nanoSeconds = calendar.component(.nanosecond, from: date)
-        return String(format: "%02d:%02d:%02d.%03d ", hour, minutes, seconds, (nanoSeconds/1000000))
+        return String(
+            format: "%02d:%02d:%02d.%03d ",
+            hour,
+            minutes,
+            seconds,
+            (nanoSeconds/1_000_000)
+        )
     }
 }
