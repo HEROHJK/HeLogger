@@ -139,7 +139,7 @@ public class HeLogger {
     ///  - {$line}: 호출한 함수 파일의 라인
     ///  - {$message}: 로깅 내용
     public var formatString =
-        "===\n[{$level}][{$type}]{$time}\n{$function} ({$file}, {$line})\n{$message}\n==="
+        "[{$time}][{$level}][{$type}][{$function} ({$file}, {$line})]\n{$message}"
     
     
     /// 간단한 로그 기록
