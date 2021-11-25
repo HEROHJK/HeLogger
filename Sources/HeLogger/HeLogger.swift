@@ -235,7 +235,7 @@ public class HeLogger {
         let seconds = calendar.component(.second, from: date)
         let nanoSeconds = calendar.component(.nanosecond, from: date)
         return String(
-            format: "%02d:%02d:%02d.%03d ",
+            format: "%02d:%02d:%02d.%03d",
             hour,
             minutes,
             seconds,
